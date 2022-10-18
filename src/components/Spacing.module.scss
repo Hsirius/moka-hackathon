@@ -1,0 +1,21 @@
+.spacing{
+  display: flex;
+}
+
+.alignCenter{
+  align-items: center;
+}
+
+.wrap{
+  flex-wrap: wrap;
+}
+
+.horizontal-separator{
+  position: relative;
+  top: -1px; // 分隔符看起来会靠下一点，微调一下
+}
+
+.vertical-separator{
+  border-bottom: 1px solid gray;
+  width: 100%;
+}
