@@ -4,14 +4,14 @@ import * as ReactIs from 'react-is';
 
 import styles from './Spacing.module.scss';
 
-type Spacing = 'sm' | 'md' | 'lg' | 'xl' | number;
+type SpacingType = 'sm' | 'md' | 'lg' | 'xl' | number;
 
 type ItemWidth = string | number;
 
 export interface SpacingProps {
   className?: string;
   style?: React.CSSProperties;
-  spacing?: Spacing | [Spacing, Spacing];
+  spacing?: SpacingType | [SpacingType, SpacingType];
   lastChildSpacing?: boolean;
   noFlex?: boolean;
   itemWidth?: ItemWidth | ItemWidth[];
@@ -42,7 +42,7 @@ const DEFAULT_SEPARATOR = {
   vertical: <div className={styles.verticalSeparator} />,
 };
 
-const getMargin = (s: Spacing) => {
+const getMargin = (s: SpacingType) => {
   return typeof s === 'number' ? `${s}px` : `${SIZE_MAP[s] || 8}px`;
 };
 

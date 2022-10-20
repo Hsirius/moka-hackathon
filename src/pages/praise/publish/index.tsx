@@ -9,10 +9,13 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { NavBar } from '@nutui/nutui-react';
 import { useNavigate } from 'react-router';
+import { Paper, Snackbar } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 
 export default function PraisePublish() {
   const navigate = useNavigate();
   const [age, setAge] = React.useState('');
+  const [isOpen, setOpen] = React.useState(false)
 
   const handleChange = (event: SelectChangeEvent) => {
     setAge(event.target.value);
@@ -20,19 +23,18 @@ export default function PraisePublish() {
 
   return (
     <>
-      <NavBar leftShow style={{marginBottom: 0}} onClickBack={() => navigate(-1)} />
-      <Typography variant="h6" gutterBottom>
+    <NavBar title='发布表白' leftShow style={{ marginBottom: 0 }} onClickBack={() => navigate(-1)} />
+    <Paper elevation={0} sx={{ width: '90%', margin: '16px auto' }}>
+      <Typography variant="h6" gutterBottom style={{color: '#1976d2'}}>
         发布你的表白
       </Typography>
       <Box
-        component="form"
+        component="div"
         display='flex'
         flexDirection='column'
-        alignItems='center'
         sx={{
-          '& > :not(style)': { m: 1, width: '25ch' },
+          '& > :not(style)': { m: 1 },
         }}
-        autoComplete="off"
       >
         <FormControl sx={{ m: 1, minWidth: 80 }}>
           <InputLabel id="demo-simple-select-autowidth-label">对象</InputLabel>
@@ -47,9 +49,13 @@ export default function PraisePublish() {
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
-            <MenuItem value={10}>Twenty</MenuItem>
-            <MenuItem value={21}>Twenty one</MenuItem>
-            <MenuItem value={22}>Twenty one and a half</MenuItem>
+            <MenuItem value={10}>欢哥</MenuItem>
+            <MenuItem value={21}>涛哥</MenuItem>
+            <MenuItem value={22}>壮哥</MenuItem>
+            <MenuItem value={23}>飞哥</MenuItem>
+            <MenuItem value={24}>赛雷</MenuItem>
+            <MenuItem value={25}>峰哥</MenuItem>
+            <MenuItem value={26}>高伟哥</MenuItem>
           </Select>
         </FormControl>
         <FormControl sx={{ m: 1, minWidth: 80 }}>
@@ -58,11 +64,22 @@ export default function PraisePublish() {
             label="内容"
             multiline
             rows={4}
-            defaultValue="Default Value"
           />
         </FormControl>
-        <Button variant="contained">发布</Button>
+        <Button variant="contained" onClick={() => setOpen(true)}>发布</Button>
       </Box>
+      <Snackbar
+        open={isOpen}
+        autoHideDuration={1000}
+        message="发布成功"
+        sx={{ bottom: { xs: 90, sm: 0 } }}
+        action={
+          <Button color="inherit" size="small">
+            <CloseIcon />
+          </Button>
+        }
+      />
+      </Paper>
     </>
   );
 }

@@ -25,7 +25,7 @@ import Send from '@mui/icons-material/Send';
 import Heart from '@mui/icons-material/Favorite';
 import HeartBroken from '@mui/icons-material/HeartBroken';
 import Replay from '@mui/icons-material/ChatBubble';
-import Spacing from '../../../components/Spacing';
+import Spacing from '../../../components/Spacing.tsx';
 
 
 interface TabPanelProps {

@@ -18,6 +18,7 @@ import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 
 export default function Footer() {
   const [value, setValue] = React.useState(0);
+  const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
 
 const actions = [
@@ -44,6 +45,9 @@ const actions = [
       ariaLabel="SpeedDial basic example"
       sx={{ position: 'absolute', bottom: '50%', right: 'calc(50% - 28px)' }}
       icon={<SpeedDialIcon />}
+      onClose={() => setOpen(false)}
+      onOpen={() => setOpen(true)}
+      open={open}
     >
       {actions.map((action) => (
         <SpeedDialAction
@@ -51,7 +55,7 @@ const actions = [
           icon={action.icon}
           tooltipTitle={action.name}
           tooltipOpen
-          onClick={action.clickHandler}
+          onClick={(e) => {e.stopPropagation();action.clickHandler();setOpen(false) }}
         />
       ))}
     </SpeedDial>
